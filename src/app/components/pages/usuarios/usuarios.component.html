@@ -1,0 +1,77 @@
+<section>
+    <div class="container-actions">
+        <div class="title-subtitle">
+            <div class="title">Usuarios</div>
+            <div class="description"> Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+        </div>
+        <div class="container-preview">
+            <div class="preview">
+                <img src="../../../../assets/eye.svg" alt="" class="icon-eye">
+                <div class="name">Previsualizar</div>
+            </div>
+        </div>
+        <div class="container-add">
+            <div class="add">
+                <img src="../../../../assets/icon/add.svg" alt="">
+                <div class="name">Agregar nuevo usuario</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-search">
+        <div class="icon-search"></div>
+        <input type="text" class="input-search" placeholder="Búsqueda">
+    </div>
+</section>
+<section class="section-response">
+
+    <table class="table-response">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Name</th>
+                <th>Apellido paterno</th>
+                <th>Apellido materno</th>
+                <th>Email</th>
+                <th>Rol id</th>
+                <th>Estatus</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- | filter:filterData -->
+            <tr *ngFor="let user of usuarios ">
+                <td><img src="../../../../assets/icon/points.svg" alt=""></td>
+                <td>
+                    <img *ngIf="user.picture" [src]="user.picture" alt="user" class="userImage">
+                </td>
+                <td>{{user.name}}</td>
+                <td>{{user.fathersLastName}}</td>
+                <td>{{user.mothersLastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roleId}}</td>
+                <td>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" [id]="user.id" [checked]="user.active">
+                        <label class="custom-control-label" [for]="user.id"></label>
+                    </div>
+                </td>
+                <td>
+                    <img src="../../../../assets/icon/web.svg" alt="" (click)="editarUsuario(user)" class="" />
+                    <img src="../../../../assets/icon/trash.svg" alt="" (click)="borrarUsuario(user)" class="delete" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section>
+    <div id="modalAddUser" class="modal">
+        <!-- Modal content Add User -->
+        <div class="modal-content">
+            <span class="close" (click)="closeAddUser()">X</span>
+            <!-- <app-add-user></app-add-user> -->
+        </div>
+    </div>
+</section>
